@@ -128,7 +128,7 @@
     /* Experience */
     .timeline { list-style: none; margin: 0; padding: 0; position: relative; }
     .timeline::before { content: ""; position: absolute; left: 7px; top: 8px; bottom: 8px; width: 1px; background: var(--line-2); }
-    .job { position: relative; padding-left: 40px; margin-bottom: 44px; }
+    .job { position: relative; padding-left: 40px; margin-bottom: 28px; }
     .job:last-child { margin-bottom: 0; }
     .job::before {
       content: ""; position: absolute; left: 2px; top: 8px; width: 11px; height: 11px;
@@ -138,8 +138,8 @@
     .job-top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 16px; align-items: baseline; }
     .job h3 { font: 600 19px var(--mono); margin: 0; color: #f2f6f3; }
     .job .where { font: 13px var(--mono); color: var(--muted); }
-    .role-line { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2px 16px; margin: 14px 0 6px; }
-    .role-line:first-of-type { margin-top: 6px; }
+    .role-line { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2px 16px; margin: 4px 0 0; }
+    .job-top + .role-line { margin-top: 4px; }
     .role-line .title { font: 500 15px var(--mono); color: var(--accent); }
     .role-line .when { font: 13px var(--mono); color: var(--dim); }
     .job ul { margin: 6px 0 0; padding: 0; list-style: none; }
@@ -282,13 +282,13 @@
     .stat span { font-size: 13px; color: var(--muted); line-height: 1.4; display: block; }
 
     .timeline { list-style: none; margin: 0; padding: 0; }
-    .job { margin-bottom: 48px; }
+    .job { margin-bottom: 28px; }
     .job:last-child { margin-bottom: 0; }
     .job-top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 2px 16px; }
     .job h3 { font-size: 19px; font-weight: 600; color: var(--text); margin: 0; letter-spacing: -0.01em; }
     .job .where { font-size: 14px; color: var(--muted); }
-    .role-line { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2px 16px; margin: 18px 0 4px; }
-    .role-line:first-of-type { margin-top: 4px; }
+    .role-line { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2px 16px; margin: 4px 0 0; }
+    .job-top + .role-line { margin-top: 2px; }
     .role-line .title { font-size: 15px; font-weight: 500; color: var(--body); }
     .role-line .when { font-size: 14px; color: var(--muted); font-variant-numeric: tabular-nums; }
     .job ul { margin: 8px 0 0; padding-left: 20px; }
@@ -471,41 +471,19 @@
         <li class="job current">
           <div class="job-top"><h3>Tesla</h3><span class="where">Berlin, Germany</span></div>
           <div class="role-line"><span class="title">Sr. Software Engineer</span><span class="when">Sep 2026 — Present</span></div>
-          <ul>
-            <li>Design and implementation of enterprise-scale manufacturing execution software in Golang.</li>
-          </ul>
         </li>
         <li class="job">
           <div class="job-top"><h3>TSMC</h3><span class="where">Hsinchu, Taiwan</span></div>
           <div class="role-line"><span class="title">Sr. Software Engineer</span><span class="when">Apr 2025 — Jul 2026</span></div>
-          <ul>
-            <li>Resolved memory leaks in three legacy production systems that caused recurring OOM restarts, using heap profiling and allocation analysis; shared profiling practices across teams.</li>
-            <li>Led the agile transformation of enterprise IT projects with Node.js and MongoDB; introduced TDD, trace IDs and feature flags, cutting release cycles from 6+ months to 2.</li>
-            <li>Upgraded three legacy systems from Spring Boot 2.7 to 3.3 with verified functional parity, and documented their architecture for the team.</li>
-          </ul>
         </li>
         <li class="job">
           <div class="job-top"><h3>Instill AI</h3><span class="where">Remote, Taiwan</span></div>
           <div class="role-line"><span class="title">Sr. Software Engineer</span><span class="when">Jul 2024 — Nov 2024</span></div>
-          <ul>
-            <li>Optimized async task workflows and distributed caching in the AI/ML data pipeline, enabling granular performance monitoring across microservices.</li>
-          </ul>
         </li>
         <li class="job">
           <div class="job-top"><h3>Tesla</h3><span class="where">Shanghai, China</span></div>
           <div class="role-line"><span class="title">Sr. Software Engineer</span><span class="when">Jan 2022 — Jun 2024</span></div>
-          <ul>
-            <li>Full-stack ownership of factory software for manufacturing and quality, specializing in Golang backends on highly available microservices.</li>
-            <li>Designed an MQ-driven hot-reload mechanism for in-memory caches across replicas; adopted by the global team and cut maintenance downtime by 25%.</li>
-            <li>Led a two-person team and mentored four new engineers and interns.</li>
-            <li>Rolled out the quality management solution at Gigafactory Texas, with on-site knowledge transfer and cross-team deployment processes.</li>
-          </ul>
           <div class="role-line"><span class="title">Software Engineer</span><span class="when">Jan 2020 — Jan 2022</span></div>
-          <ul>
-            <li>Built a quality management solution on Flowable, Keycloak and Kafka combining approval workflows and warehouse handling, saving over $100k.</li>
-            <li>Introduced an OpenAPI-based code generator that saved ~30% of backend and frontend development time.</li>
-            <li>Explored Raft consensus in distributed system design and introduced a Golang ORM framework, sharing insights in company-wide forums.</li>
-          </ul>
         </li>
       </ol>
 
@@ -515,24 +493,14 @@
           <li class="job">
             <div class="job-top"><h3>Teradyne</h3><span class="where">Shanghai, China</span></div>
             <div class="role-line"><span class="title">Software Engineer</span><span class="when">Dec 2017 — Dec 2019</span></div>
-            <ul>
-              <li>Built Windows applications in C#/.NET for customers and application engineers.</li>
-              <li>Supported on-site design discussions and technical reviews with Apple and TSMC in California and Taiwan.</li>
-            </ul>
           </li>
           <li class="job">
             <div class="job-top"><h3>Cimforce International</h3><span class="where">Taipei, Taiwan</span></div>
             <div class="role-line"><span class="title">System Development Engineer</span><span class="when">Aug 2016 — Oct 2017</span></div>
-            <ul>
-              <li>Developed C# software for factory equipment and robotic arms.</li>
-            </ul>
           </li>
           <li class="job">
             <div class="job-top"><h3>Pegatron</h3><span class="where">Taipei, Taiwan</span></div>
             <div class="role-line"><span class="title">Mechanical Engineer</span><span class="when">Sep 2014 — Aug 2016</span></div>
-            <ul>
-              <li>Designed mechanical structures for automotive displays and other customer products.</li>
-            </ul>
           </li>
         </ol>
       </details>
