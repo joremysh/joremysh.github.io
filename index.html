@@ -611,7 +611,7 @@
           <g class="pin" data-pin="taiwan" tabindex="0" role="button" aria-label="Taipei · Hsinchu, Taiwan: TSMC, 2025 — 2026; Instill AI (remote), 2024; Cimforce · Pegatron, 2014 — 2017" transform="translate(826.8 179.8)"><circle class="pin-pulse" r="5"/><circle class="pin-dot" r="4"/><circle class="pin-hit" r="14"/></g>
           <g class="pin" data-pin="shanghai" tabindex="0" role="button" aria-label="Shanghai, China: Tesla, 2020 — 2024; Teradyne, 2017 — 2019" transform="translate(821.8 159.3)"><circle class="pin-pulse" r="5"/><circle class="pin-dot" r="4"/><circle class="pin-hit" r="14"/></g>
           <g class="pin" data-pin="austin" tabindex="0" role="button" aria-label="Austin, US: Tesla, 2022 — 2024" transform="translate(240.3 162.4)"><circle class="pin-pulse" r="5"/><circle class="pin-dot" r="4"/><circle class="pin-hit" r="14"/></g>
-          <g class="pin" data-pin="california" tabindex="0" role="button" aria-label="California, US: Teradyne, On-site technical reviews" transform="translate(183.8 139.6)"><circle class="pin-pulse" r="5"/><circle class="pin-dot" r="4"/><circle class="pin-hit" r="14"/></g>
+          <g class="pin" data-pin="california" tabindex="0" role="button" aria-label="California, US: Teradyne, 2018 — 2019" transform="translate(183.8 139.6)"><circle class="pin-pulse" r="5"/><circle class="pin-dot" r="4"/><circle class="pin-hit" r="14"/></g>
           </svg>
           <button type="button" class="map-expand" title="Full screen" aria-label="Expand map to full window" aria-pressed="false" hidden>
             <svg class="i-expand" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
@@ -849,7 +849,7 @@
   (function () {
     var fig = document.querySelector(".map");
     if (!fig) return;
-    var tips = {"berlin":{"title":"Berlin, Germany","rows":[["Tesla","2026 — Present"]],"current":true},"taiwan":{"title":"Taipei · Hsinchu, Taiwan","rows":[["TSMC","2025 — 2026"],["Instill AI (remote)","2024"],["Cimforce · Pegatron","2014 — 2017"]],"current":false},"shanghai":{"title":"Shanghai, China","rows":[["Tesla","2020 — 2024"],["Teradyne","2017 — 2019"]],"current":false},"austin":{"title":"Austin, US","rows":[["Tesla","2022 — 2024"]],"current":false},"california":{"title":"California, US","rows":[["Teradyne","On-site technical reviews"]],"current":false}};
+    var tips = {"berlin":{"title":"Berlin, Germany","rows":[["Tesla","2026 — Present"]],"current":true},"taiwan":{"title":"Taipei · Hsinchu, Taiwan","rows":[["TSMC","2025 — 2026"],["Instill AI (remote)","2024"],["Cimforce · Pegatron","2014 — 2017"]],"current":false},"shanghai":{"title":"Shanghai, China","rows":[["Tesla","2020 — 2024"],["Teradyne","2017 — 2019"]],"current":false},"austin":{"title":"Austin, US","rows":[["Tesla","2022 — 2024"]],"current":false},"california":{"title":"California, US","rows":[["Teradyne","2018 — 2019"]],"current":false}};
     var canvas = fig.querySelector(".map-canvas"), tip = fig.querySelector(".map-tip");
     var open = null, lastPointer = "mouse";
     fig.classList.add("is-live");
