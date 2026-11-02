@@ -176,6 +176,8 @@
     .skills h3 { font: 500 13px var(--mono); color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; margin: 0 0 14px; }
     .skills .chips { margin: 0; }
     .skills .chips li { color: var(--text); background: var(--panel); }
+    .edu-head { font: 500 13px var(--mono); color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; margin: 56px 0 14px; }
+    .edu-head + .edu { margin-top: 0; }
     .edu { margin-top: 56px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 16px; padding: 24px 28px; border: 1px solid var(--line-2); background: var(--panel); }
     .edu b { font: 600 17px var(--mono); color: #f2f6f3; display: block; }
     .edu span { color: var(--muted); font-size: 15px; }
@@ -311,6 +313,8 @@
     .skills { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px 40px; }
     .skills h3 { font-size: 15px; font-weight: 600; color: var(--text); margin: 0 0 10px; }
     .skills .chips { margin: 0; }
+    .edu-head { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); margin: 48px 0 0; padding-top: 32px; border-top: 1px solid var(--line); }
+    .edu-head + .edu { margin-top: 16px; padding-top: 0; border-top: 0; }
     .edu { margin-top: 48px; padding-top: 32px; border-top: 1px dashed var(--line); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 16px; }
     .edu b { font-size: 17px; font-weight: 600; color: var(--text); display: block; }
     .edu span { font-size: 15px; color: var(--body); }
@@ -527,6 +531,12 @@
           </li>
         </ol>
       </details>
+
+      <h3 class="edu-head">Education</h3>
+      <div class="edu">
+        <div><b>National Taiwan University</b><span>B.S. in Mechanical Engineering</span></div>
+        <span class="when">Taipei, Taiwan</span>
+      </div>
     </div>
   </section>
 
@@ -567,10 +577,6 @@
         <div><h3>Cloud &amp; Infra</h3><ul class="chips"><li>Kubernetes</li><li>Azure</li><li>GCP</li><li>Grafana</li></ul></div>
         <div><h3>Data &amp; Messaging</h3><ul class="chips"><li>MySQL</li><li>MongoDB</li><li>Kafka</li><li>Redis</li></ul></div>
         <div><h3>Frameworks</h3><ul class="chips"><li>React</li><li>Angular</li><li>Django</li></ul></div>
-      </div>
-      <div class="edu">
-        <div><b>National Taiwan University</b><span>B.S. in Mechanical Engineering</span></div>
-        <span class="when">Taipei, Taiwan</span>
       </div>
     </div>
   </section>
