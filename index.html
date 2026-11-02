@@ -135,6 +135,19 @@
     .map-switch button:hover { color: var(--accent); }
     .map-switch button[aria-pressed="true"] { color: var(--bg); background: var(--accent); }
     .map-switch button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    .map-switch { margin-left: auto; }
+    .map-expand { flex: none; display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; padding: 0; cursor: pointer; }
+    .map-expand[hidden] { display: none; }
+    .map-expand svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .map-expand .i-collapse, .map.is-expanded .map-expand .i-expand { display: none; }
+    .map.is-expanded .map-expand .i-collapse { display: block; }
+    .map.is-expanded { position: fixed; inset: 0; z-index: 100; margin: 0; padding: 16px 20px 20px; border: 0; display: flex; flex-direction: column; background: var(--bg); }
+    .map.is-expanded .map-canvas { flex: 1; min-height: 0; display: flex; align-items: center; justify-content: center; }
+    .map.is-expanded svg { width: 100%; height: 100%; }
+    body.map-open { overflow: hidden; }
+    .map-expand { border: 1px solid var(--line-2); background: transparent; color: var(--muted); border-radius: 0; }
+    .map-expand:hover { color: var(--accent); border-color: var(--accent); }
+    .map-expand:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
     .map-canvas { position: relative; border: 1px solid var(--line-2); background: var(--panel); padding: 20px 16px; }
     .map svg { display: block; width: 100%; height: auto; overflow: visible; }
     .map .layer-dots, .map .layer-outline, .map .layer-fill { display: none; }
@@ -348,6 +361,19 @@
     .map-switch button:hover { color: var(--text); }
     .map-switch button[aria-pressed="true"] { color: var(--text); background: var(--bg); box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08); }
     .map-switch button:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+    .map-switch { margin-left: auto; }
+    .map-expand { flex: none; display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; padding: 0; cursor: pointer; }
+    .map-expand[hidden] { display: none; }
+    .map-expand svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .map-expand .i-collapse, .map.is-expanded .map-expand .i-expand { display: none; }
+    .map.is-expanded .map-expand .i-collapse { display: block; }
+    .map.is-expanded { position: fixed; inset: 0; z-index: 100; margin: 0; padding: 16px 20px 20px; border: 0; display: flex; flex-direction: column; background: var(--bg); }
+    .map.is-expanded .map-canvas { flex: 1; min-height: 0; display: flex; align-items: center; justify-content: center; }
+    .map.is-expanded svg { width: 100%; height: 100%; }
+    body.map-open { overflow: hidden; }
+    .map-expand { border: 1px solid var(--line); background: var(--bg); color: var(--text); border-radius: 8px; }
+    .map-expand:hover { border-color: var(--text); }
+    .map-expand:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
     .map-canvas { position: relative; border: 1px solid var(--line); border-radius: 12px; background: #fbfbfa; padding: 20px 16px; }
     .map svg { display: block; width: 100%; height: auto; overflow: visible; }
     .map .layer-dots, .map .layer-outline, .map .layer-fill { display: none; }
@@ -572,6 +598,10 @@
             <button type="button" data-map-style="outline" aria-pressed="false">Outline</button>
             <button type="button" data-map-style="fill" aria-pressed="false">Filled</button>
           </span>
+          <button type="button" class="map-expand" aria-label="Expand map to full window" aria-pressed="false" hidden>
+            <svg class="i-expand" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+            <svg class="i-collapse" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 14h6v6M20 10h-6V4M14 10l7-7M3 21l7-7"/></svg>
+          </button>
         </figcaption>
         <div class="map-canvas">
           <svg viewBox="0 1 1000 442" role="img" aria-label="World map of where Jeremy has worked (Berlin, Taipei and Hsinchu, Shanghai, Austin, California) and visited (Japan, Malaysia, Singapore, South Korea, Australia)">
@@ -865,12 +895,28 @@
         if (open === pin && lastPointer !== "mouse") hide(); else show(pin);
       });
       pin.addEventListener("keydown", function (e) {
-        if (e.key === "Escape") hide();
+        if (e.key === "Escape" && open) { e.stopPropagation(); hide(); }
         if (e.key === "Enter" || e.key === " ") { e.preventDefault(); show(pin); }
       });
     });
     document.addEventListener("click", function (e) { if (open && !e.target.closest(".pin")) hide(); });
     window.addEventListener("resize", hide);
+
+    // Full-window view
+    var expandBtn = fig.querySelector(".map-expand");
+    function setExpanded(on) {
+      hide();
+      fig.classList.toggle("is-expanded", on);
+      document.body.classList.toggle("map-open", on);
+      expandBtn.setAttribute("aria-pressed", String(on));
+      expandBtn.setAttribute("aria-label", on ? "Close full-window map" : "Expand map to full window");
+      expandBtn.focus();
+    }
+    expandBtn.hidden = false;
+    expandBtn.addEventListener("click", function () { setExpanded(!fig.classList.contains("is-expanded")); });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && fig.classList.contains("is-expanded")) setExpanded(false);
+    });
 
     if ("IntersectionObserver" in window) {
       var io = new IntersectionObserver(function (entries) {
